@@ -1,0 +1,17 @@
+server:
+  port: 8761
+eureka:
+  server:
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.85
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha

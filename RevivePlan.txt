@@ -1,0 +1,306 @@
+Project Plan
+1. Define the Scope (Day 1)
+Backend (Spring Boot Microservices):
+
+Admin service: CRUD operations for vehicles (bikes and cars).
+
+User service: User registration, login, and authentication (JWT).
+
+Vehicle service: Listing vehicles, filtering by price, manufacturing year, etc.
+
+Booking service: Book a test drive or buy a vehicle.
+
+Frontend (React):
+
+Admin panel: Add, update, delete, and list vehicles.
+
+User panel: Browse vehicles, filter, book test drives, and buy.
+
+Login/register pages.
+
+Database:
+
+Use MySQL or PostgreSQL for relational data (users, vehicles, bookings).
+
+Use MongoDB (optional) for unstructured data like logs or analytics.
+
+API Documentation:
+
+Use Swagger for API documentation.
+
+2. Set Up the Project (Day 1)
+Backend:
+
+Create a multi-module Maven project for microservices.
+
+Set up Spring Boot for each microservice (Admin, User, Vehicle, Booking).
+
+Configure Eureka Server for service discovery.
+
+Use Spring Cloud Gateway for API gateway.
+
+Add Spring Security for authentication and authorization.
+
+Frontend:
+
+Set up a React project using create-react-app.
+
+Install necessary libraries: react-router-dom, axios, redux (optional), and material-ui or bootstrap for styling.
+
+Database:
+
+Set up MySQL/PostgreSQL and MongoDB (if needed).
+
+Use Flyway or Liquibase for database migrations.
+
+3. Develop Backend Microservices (Day 2–4)
+Admin Service:
+
+CRUD APIs for vehicles (bikes and cars).
+
+Use Spring Data JPA for database operations.
+
+User Service:
+
+User registration and login APIs.
+
+Use JWT for authentication.
+
+Vehicle Service:
+
+APIs to list vehicles with filters (price, year, etc.).
+
+Use pagination for better performance.
+
+Booking Service:
+
+APIs to book a test drive or buy a vehicle.
+
+Use transactional management for bookings.
+
+Common:
+
+Add exception handling and logging.
+
+Use DTOs for data transfer between layers.
+
+4. Develop Frontend (Day 5–6)
+Admin Panel:
+
+Create forms to add, update, and delete vehicles.
+
+Display a list of vehicles in a table.
+
+User Panel:
+
+Create a homepage to list vehicles with filters.
+
+Add a vehicle details page with options to book a test drive or buy.
+
+Implement login and registration forms.
+
+Integration:
+
+Use axios to call backend APIs.
+
+Handle authentication using JWT tokens.
+
+5. Testing and Bug Fixing (Day 7)
+Backend:
+
+Write unit tests using JUnit and Mockito.
+
+Test APIs using Postman.
+
+Frontend:
+
+Test all features manually.
+
+Fix any UI/UX issues.
+
+Integration Testing:
+
+Ensure all microservices work together seamlessly.
+
+6. Hosting (Day 7)
+Backend:
+
+Use Docker to containerize each microservice.
+
+Deploy on AWS, Heroku, or any cloud platform.
+
+Frontend:
+
+Build the React app and deploy it on Netlify, Vercel, or S3.
+
+Database:
+
+Use a managed database service like AWS RDS or MongoDB Atlas.
+
+Tech Stack
+Backend:
+
+Java 17 (latest LTS version).
+
+Spring Boot 3.x.
+
+Spring Cloud (Eureka, Gateway).
+
+Spring Security with JWT.
+
+Spring Data JPA.
+
+MySQL/PostgreSQL.
+
+Maven (latest version).
+
+Frontend:
+
+React 18.
+
+Axios for API calls.
+
+React Router for navigation.
+
+Material-UI or Bootstrap for styling.
+
+Other Tools:
+
+Docker for containerization.
+
+Postman for API testing.
+
+Git for version control.
+
+Basic Features to Implement
+Admin Features:
+
+Add, update, delete, and list vehicles.
+
+User Features:
+
+Register, login, and view profile.
+
+Browse vehicles with filters (price, year, etc.).
+
+Book a test drive or buy a vehicle.
+
+General Features:
+
+Responsive UI.
+
+Authentication and authorization.
+
+Future Features
+Integrate payment gateway (Razorpay, Stripe).
+
+Book a service at the nearest garage.
+
+Add reviews and ratings for vehicles.
+
+Implement advanced search and filtering.
+
+Add notifications (email/SMS) for bookings.
+
+Tips for Success
+Prioritize Features:
+
+Focus on the MVP first. Add advanced features later.
+
+Use Ready-Made Libraries:
+
+Use libraries like Material-UI or Bootstrap to speed up frontend development.
+
+Automate Repetitive Tasks:
+
+Use scripts for building and deploying the app.
+
+Collaborate:
+
+If you’re working in a team, use Git for version control and assign tasks using a project management tool like Trello or Jira.
+
+
+Additional Port Configurations for Other Services
+Since you have multiple services (api-gateway, eureka-server, user-service, vehicle-service, booking-service), ensure that each service runs on a unique port. Here's an example configuration for each service's application.yml:
+
+api-gateway:
+server:
+  port: 8090
+  
+eureka-server:
+server:
+  port: 8761
+  
+admin-service:
+server:
+  port: 8081
+ 
+user-service:
+server:
+  port: 8083
+  
+vehicle-service:
+server:
+  port: 8084
+  
+booking-service:
+server:
+  port: 8082
+
+revive-app:
+server:
+  port: 8080
+  
+  
+ To ensure that your services start in a sequential order, you'll need to configure your development environment to launch the eureka-service first, followed by the other services. You can achieve this by creating a script that starts each service in the correct order. Here's how you can do it:
+
+Create a Startup Script
+Create a Startup Script (e.g., start-services.sh):
+
+In the root of your project directory (ReviveAutos/), create a new file named start-services.sh.
+
+Add the following content to the script to start each service in order:
+
+sh
+#!/bin/bash
+
+# Start Eureka Server
+echo "Starting Eureka Server..."
+(cd revive/eureka-server && mvn spring-boot:run) &
+
+# Wait for Eureka Server to start (you may adjust the sleep duration if needed)
+sleep 30
+
+# Start API Gateway
+echo "Starting API Gateway..."
+(cd revive/api-gateway && mvn spring-boot:run) &
+
+# Start Admin Service
+echo "Starting Admin Service..."
+(cd revive/admin-service && mvn spring-boot:run) &
+
+# Start User Service
+echo "Starting User Service..."
+(cd revive/user-service && mvn spring-boot:run) &
+
+# Start Vehicle Service
+echo "Starting Vehicle Service..."
+(cd revive/vehicle-service && mvn spring-boot:run) &
+
+# Start Booking Service
+echo "Starting Booking Service..."
+(cd revive/booking-service && mvn spring-boot:run) &
+Make the Script Executable:
+
+Open a terminal and navigate to the root of your project directory (ReviveAutos/).
+
+Run the following command to make the script executable:
+
+sh
+chmod +x start-services.sh
+Run the Startup Script:
+
+To start your services in the correct order, simply run the script:
+
+sh
+./start-services.sh

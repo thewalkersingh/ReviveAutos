@@ -1,0 +1,98 @@
+//Populate Data Using SQL Scripts
+
+INSERT INTO vehicle (type, model, manufacturer, manufacturing_year, price) VALUES
+('car', 'Model S', 'Tesla', 2022, 79990.00),
+('car', 'Civic', 'Honda', 2021, 22000.00),
+('bike', 'Ninja 400', 'Kawasaki', 2023, 5000.00),
+('bike', 'MT-07', 'Yamaha', 2022, 7700.00),
+('car', 'Camry', 'Toyota', 2020, 25000.00);
+
+INSERT INTO user (username, password, email) VALUES
+('john_doe', 'password123', 'john.doe@example.com'),
+('jane_smith', 'password456', 'jane.smith@example.com'),
+('alice_wonder', 'password789', 'alice.wonder@example.com');
+
+INSERT INTO booking (user_id, vehicle_id, type, status) VALUES
+(1, 1, 'test-drive', 'pending'),
+(2, 3, 'purchase', 'pending'),
+(3, 2, 'test-drive', 'completed');
+
+//Populate Data Using Postman
+
+//Add Vehicles Using Postman
+[
+    {
+        "type": "car",
+        "model": "Model S",
+        "manufacturer": "Tesla",
+        "manufacturingYear": 2022,
+        "price": 79990.00
+    },
+    {
+        "type": "car",
+        "model": "Civic",
+        "manufacturer": "Honda",
+        "manufacturingYear": 2021,
+        "price": 22000.00
+    },
+    {
+        "type": "bike",
+        "model": "Ninja 400",
+        "manufacturer": "Kawasaki",
+        "manufacturingYear": 2023,
+        "price": 5000.00
+    },
+    {
+        "type": "bike",
+        "model": "MT-07",
+        "manufacturer": "Yamaha",
+        "manufacturingYear": 2022,
+        "price": 7700.00
+    },
+    {
+        "type": "car",
+        "model": "Camry",
+        "manufacturer": "Toyota",
+        "manufacturingYear": 2020,
+        "price": 25000.00
+    }
+]
+//Add Users Using Postman
+[
+    {
+        "username": "john_doe",
+        "password": "password123",
+        "email": "john.doe@example.com"
+    },
+    {
+        "username": "jane_smith",
+        "password": "password456",
+        "email": "jane.smith@example.com"
+    },
+    {
+        "username": "alice_wonder",
+        "password": "password789",
+        "email": "alice.wonder@example.com"
+    }
+]
+//Add Bookings Using Postman
+[
+    {
+        "userId": 1,
+        "vehicleId": 1,
+        "type": "test-drive",
+        "status": "pending"
+    },
+    {
+        "userId": 2,
+        "vehicleId": 3,
+        "type": "purchase",
+        "status": "pending"
+    },
+    {
+        "userId": 3,
+        "vehicleId": 2,
+        "type": "test-drive",
+        "status": "completed"
+    }
+]

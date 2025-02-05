@@ -1,0 +1,43 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: booking-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/revive
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+#eureka service
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#actuator service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+#swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# stripe payment gateway
+stripe:
+  api-key: sk_test_51Qo9Ou4UmYCnQBjUlLDB50z0RM4rp0Hji5dWSldRB6pX8YvJQs05JGfw7B2lPXseEu3wKT1NBFoeZTz3EdsLZC1K00CrgOG8rp

@@ -1,0 +1,27 @@
+server:
+  port: 8080  # Or any other port
+
+spring:
+  application:
+    name: revive-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/revive?createDatabaseIfNotExist=true
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
