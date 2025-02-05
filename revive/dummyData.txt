@@ -1,3 +1,19 @@
+// all urls
+Eureka: http://localhost:8761/
+
+// Access the Swagger UI for each service:
+    Admin Service: http://localhost:8081/swagger-ui.html
+    User Service: http://localhost:8083/swagger-ui.html
+    Vehicle Service: http://localhost:8084/swagger-ui.html
+    Booking Service: http://localhost:8082/swagger-ui.html
+
+// Postman Collection
+    Admin Service: http://localhost:8090/api/admin/vehicles
+    User Service: http://localhost:8090/api/user/register
+    Vehicle Service: http://localhost:8090/api/vehicle
+    Booking Service: http://localhost:8090/api/booking/test-drive
+
+
 //Populate Data Using SQL Scripts
 
 INSERT INTO vehicle (type, model, manufacturer, manufacturing_year, price) VALUES

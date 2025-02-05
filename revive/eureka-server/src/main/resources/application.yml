@@ -2,7 +2,7 @@ server:
   port: 8761
 eureka:
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
     renewal-percent-threshold: 0.85
   instance:
     hostname: localhost

@@ -1,6 +1,12 @@
 server:
   port: 8090
+
+#spring
 spring:
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
       routes:
@@ -25,8 +31,6 @@ spring:
           predicates:
             - Path=/api/revive/**
 
-  main:
-    web-application-type: reactive
 
 #eureka service
 eureka:
@@ -44,8 +48,12 @@ springdoc:
     tags-sorter: alpha
     operations-sorter: alpha
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/revive
-#    username: root
-#    password: admin
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

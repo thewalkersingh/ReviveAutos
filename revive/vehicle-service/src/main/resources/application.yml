@@ -1,6 +1,7 @@
 server:
   port: 8084
 
+# spring
 spring:
   application:
     name: vehicle-service
@@ -13,6 +14,7 @@ spring:
     hibernate:
       ddl-auto: update
 
+# eureka client
 eureka:
   instance:
     hostname: localhost
@@ -20,8 +22,19 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+# springdoc
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
     tags-sorter: alpha
     operations-sorter: alpha
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

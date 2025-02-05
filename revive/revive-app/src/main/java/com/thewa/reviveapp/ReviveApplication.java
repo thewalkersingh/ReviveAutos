@@ -1,4 +1,4 @@
-package com.thewa.revive;
+package com.thewa.reviveapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
